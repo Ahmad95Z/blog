@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% block content %}
+                        <section class="page-top-section set-bg" data-setbg="{{ url_for('static', filename = 'img/header-bg/1.jpg')}}">
+                            <div class="container">
+                                <h2>Вход</h2>
+                            </div>
+                        </section>
+                    	<section class="blog-section spad">
+                            <div class="container">
+                                <div class="row">
+                                    
+                                        <div class="col-lg-8">   
+                            <form class="row login_form" method="POST"  novalidate="novalidate ">
+                                <div class="col-lg-8">
+								<input type="email" class="form-control"  name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'"> <br>
+                            </div>
+                            <div class="col-lg-8"> 
+                            <input type="password" class="form-control"  name="password" placeholder="Пароль" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Пароль'"> <br>
+                            </div>
+                            </div>
+                                </secetion>
+                            <div class="col-lg-8"> 
+                                <button type="submit" value="submit" class="btn btn-dark">Войти</button>
+                                </div>
+							</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ##### Newsletter Area End ##### -->
+{% endblock%}
