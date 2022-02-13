@@ -29,9 +29,6 @@ def new_post():
         return redirect(url_for('index'))   
     return render_template ('new-post.html',form=form)
 
-@app.route('/post-detail')
-def post():
-    return render_template('post_detail.html')
 
 
 
@@ -64,13 +61,6 @@ def registration():
         return redirect(url_for('login'))
     return render_template ('register.html', form=form)
 
-
-
-
-@app.route('/logout', methods = ['GET', 'POST'])
-def log_out():
-    logout_user()
-    return redirect(url_for('index'))
 
 @app.route('/blog/<int:post_id>')
 def post_detail(post_id):

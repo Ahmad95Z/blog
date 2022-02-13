@@ -9,6 +9,7 @@ import email_validator
 from flask_wtf.file import  FileField, FileAllowed
 from blog.models import User
 class RegistrationForm(FlaskForm):
+    users=StringField('Users',validators=[DataRequired('Это поле обязательно')])
     email = StringField('Email', validators=[DataRequired('Это поле обязательно!'),  Email("Не правильный email!")])
     password = PasswordField('Пароль', validators=[DataRequired('Это поле обязательно!')])
     confirm_password = PasswordField ('Подтвердите пароль',validators=[DataRequired('Это поле обязательно!'), EqualTo('password')])
@@ -16,7 +17,7 @@ class RegistrationForm(FlaskForm):
 
 
     def validate_email(self, email):
-        user = User.query.flter_by(email=email.data).first()
+        user = User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationErr('Такой email существует')
 

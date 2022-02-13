@@ -1,34 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
 
-	<!-- Page top section -->
-	<section class="page-top-section set-bg" data-setbg="{{ url_for('static', filename = 'img/header-bg/1.jpg')}}">
-		<div class="container">
-			<h2>Tips & Tricks</h2>
-		</div>
-	</section>
-	<!-- Page top section end -->
+<!-- Page top section -->
+<section class="page-top-section set-bg" data-setbg="img/header-bg/1.jpg">
+	<div class="container">
+		<h2>Tips & Tricks</h2>
+	</div>
+</section>
+<!-- Page top section end -->
 
-	<!-- Blog section -->
-	<section class="blog-section spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="blog-post single-post">
-					{%for post in posts %}
-						<img src="{{ url_for('static', filename = 'img/blog/' + post.image)}}" alt="">
-						<div class="post-date">{{post.date_posted}}</div>
-						<h3>{{post.title}}</h3>
-						<div class="post-metas">
-							<div class="post-meta">{{post.author}}</div>
-							<div class="post-meta">in <a href="#">Games</a></div>
-							<div class="post-meta">3 Comments</div>
-						</div>
-						<p>{{post.content [:500]}}...</p>
-						<div class="comments">
-							<h5>Comments (2)</h5>
-							<ul class="comments-list">
-					{% endfor %}
+<!-- Blog section -->
+<section class="blog-section spad">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="blog-post single-post">
+					<img src="{{url_for('static',filename='img/blog/'+post.image)}}" alt="">
+					<div class="post-date">{{post.date_posted}}</div>
+					<h3>{{post.title}}
+					</h3>
+					<div class="post-metas">
+						<div class="post-meta">{{post,author}}</div>
+						<div class="post-meta">in <a href="#">Games</a></div>
+						<div class="post-meta">3 Comments</div>
+					</div>
+					<p>{{post.content}}</p>
+					<div class="comments">
+						<h5>Comments (2)</h5>
+						<!-- <ul class="comments-list">
+							<li>
+								<img src="img/author-thumbs/1.jpg" alt="">
+								<div class="comment-text">
+									<h6>Jane Smith <a href="#" class="reply">Reply</a></h6>
+									<div class="comment-date">April 1,2019</div>
+									<p>Aenean non felis dapibus, placerat libero auctor, ornare ante. Morbi quis ex eleifend, sodales nulla vitae, scelerisque ante. Nunc id vulputate dui. Suspendisse consectetur rutrum metus nec scelerisque. </p>
+								</div>
+							</li>
+							<li>
+								<img src="img/author-thumbs/2.jpg" alt="">
+								<div class="comment-text">
+									<h6>Michael James  <a href="#" class="reply">Reply</a></h6>
+									<div class="comment-date">April 1,2019</div>
+									<p>Non felis dapibus, placerat libero auctor, ornare ante. Morbi quis ex eleifend, sodales nulla vitae, scelerisque ante. Nunc id vulputate dui. Suspendisse consectetur rutrum metus.</p>
+								</div>
+							</li>
+						</ul> -->
+						
 								
 	</section>
 	<!-- Blog section end -->
