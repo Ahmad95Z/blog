@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="col-lg-8">
-        <h3>Добавить пост</h3>
+<section class="page-top-section set-bg" data-setbg="{{ url_for('static', filename = 'img/header-bg/1.jpg')}}">
+    <div class="container">
+        <h2>Новый Пост</h2>
+    </div>
+</section>
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
         <form class="row login_form" action="" id="register_form" method="POST", enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="col-lg-8 form-group">
@@ -42,5 +48,7 @@
             </div>
             {{ form.submit(class="button button-register w-100") }}
         </form>
+    </section>
+        </div>
 </div>
 {% endblock %}

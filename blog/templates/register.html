@@ -1,65 +1,85 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
-                        <section class="page-top-section set-bg" data-setbg="{{ url_for('static', filename = 'img/header-bg/1.jpg')}}">
-                            <div class="container">
-                                <h2>Регистрация</h2>
+<section class="page-top-section set-bg" data-setbg="{{ url_for('static', filename = 'img/header-bg/1.jpg')}}">
+    <div class="container">
+        <h2>Log In</h2>
+    </div>
+</section>
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+                    <form action="#" method="post">
+                        <div class="row">
+                            <form class="row login_form"  method="POST" id="contactForm" novalidate="novalidate">
+                               {{ form.hidden_tag() }}
+                               <div class="col-12 mb-3">
+                                {% if form.users.errors %}
+                                {{ form.users(class="form-control form-control-lg is-invalid",placeholder='UserName') }} <br>
+                            <div class="invalid-feedback">
+                                {% for error in form.users.errors %}
+                                <span>{{ error }} </span>
+                                {% endfor %}
                             </div>
-                        </section>
-                    	<section class="blog-section spad">
-                            <div class="container">
-                                <div class="row">
-                                    
-                                        <div class="col-lg-8">   
-                                            <form class="row login_form" action="contact_process.php" method="POST" id="contactForm" novalidate="novalidate">
-                                                {{ form.hidden_tag() }}
-                                             <div class="col-lg-8">
-                                             {% if form.email.errors %}
-                                             {{ form.email(class="form-control form-control-lg is-invalid") }}
-                                             <div class="invalid-feedback">
-                                                 {% for error in form.email.errors %}
-                                                 <span>{{ error }} </span>
-                                                 {% endfor %}
-                                             </div>
-                                             {% else %}
-                                             {{ form.email(class="form-control form-control-lg is-invalid" , placeholder='Введите ваш email')}}
-                                             {% endif %}
-                                             </div>
-                                             <div class="col-lg-8">
-                                                 {% if form.password.errors %}}
-                                                 {{ form.password(class="form-control form-control-lg is-invalid",placeholder='Введите пароль') }}
-                                             <div class="invalid-feedback">
-                                                 {% for error in form.password.errors %}
-                                                 <span>{{ error }} </span>
-                                                 {% endfor %}
-                                             </div>
-                                             {% else %}
-                                             {{ form.password(class="form-control" , placeholder='Введите пароль')}}
-                                             {% endif %}
-                                             <div class="col-lg-8">
-                                                 {% if form.confirm_password.errors %}
-                                                 {{ form.confirm_password(class="form-control form-control-lg is-invalid",placeholder='Подтвердите пароль') }}
-                                                 <div class="invalid-feedback">
-                                                     {% for error in form.confirm_password.errors %}
-                                                     <span>{{ error }} </span>
-                                                     {% endfor %}
-                                                 </div>
-                                                 {% else %}
-                                                 {{ form.confirm_password(class="form-control" , placeholder='Подтвердите пароль')}}
-                                                 {% endif %}
-                                                 
-                                             </div>
-                                             <div  class="col-lg-8">
-                                                {{ form.submit(class="button btn amado-btn w-100" )}}
-                                            </div>
-                                                <a class="button button-account" href="{{url_for('login')}}">У меня уже есть аккаунт</a>
+                            {% else %}
+                            {{ form.users(class="form-control" , placeholder='UserName')}} <br>
+                            {% endif %}
+                            </div>
+                            <div class="col-12 mb-3">
+                            {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid") }} <br>
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                <span>{{ error }} </span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.email(class="form-control form-control-lg is-invalid" , placeholder='Введите ваш email')}} <br>
+                            {% endif %}
+                            </div>
+                            <div class="col-12 mb-3">
+                                {% if form.password.errors %}
+                                {{ form.password(class="form-control form-control-lg is-invalid",placeholder='Введите пароль') }} <br>
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                <span>{{ error }} </span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.password(class="form-control" , placeholder='Введите пароль')}} <br>
+                            {% endif %}
+                            <div class="col-12">
+                                {% if form.confirm_password.errors %}
+                                {{ form.confirm_password(class="form-control form-control-lg is-invalid",placeholder='Подтвердите пароль') }} <br>
+                                <div class="invalid-feedback">
+                                    {% for error in form.confirm_password.errors %}
+                                    <span>{{ error }} </span>
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                </div>
+                            </form>
+                                {% else %}
+                                {{ form.confirm_password(class="form-control" , placeholder='Подтвердите пароль')}}
+                                {% endif %}
+								
+                            </div>
+                            </form>
+                            </form>
+
+                        
+							
+                            <div  class="col-12 mb-3">
+                            {{ form.submit(class="button btn amado-btn w-100" )}}
+                        </div>
+                            <a class="button button-account" href="{{url_for('login')}}">У меня уже есть аккаунт</a>
                         </form>
+                    </section>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-
-<!-- ##### Newsletter Area End ##### -->
-{% endblock%}
+{% endblock %}

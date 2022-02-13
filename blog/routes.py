@@ -7,7 +7,9 @@ from blog.forms import RegistrationForm, PostForm
 from PIL import Image
 @app.route('/')
 def index():
-    return render_template('index.html')
+    page = request.args.get('page',type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=2)
+    return render_template('index.html', posts=posts)
 
 @app.route('/new-post', methods=['GET','POST'])
 @login_required
@@ -32,6 +34,7 @@ def post():
     return render_template('post_detail.html')
 
 
+
 @app.route('/login', methods =['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -40,26 +43,25 @@ def login():
         user = User.query.filter_by(email = request.form.get('email')).first()
         if user and user.password == request.form.get('password'):
             login_user(user)
-        return redirect(url_for('registration'))
+        return redirect(url_for('index'))
     return render_template('login.html')
 
-@app.route('/logout',methods=['GET','POST'])
+@app.route('/logout', methods = ['GET', 'POST'])
 def logout():
         logout_user()
         return redirect(url_for('index'))
 
-@app.route('/register',methods=['GET','POST'])
+@app.route('/register', methods =['GET', 'POST'])
 def registration():
     if current_user.is_authenticated:
-        return redirect  (url_for('index'))
-    
-    form= RegistrationForm()
+        return redirect(url_for('index'))
+    form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data, password=form.password.data)
+        user = User(email = form.email.data, password = form.password.data, users = form.users.data)
         db.session.add(user)
         db.session.commit()
-        flash('Вы успешно зарегистрировались','succsess')
-        return redirect (url_for('login'))
+        flash('Registration completed successfully!', 'success')
+        return redirect(url_for('login'))
     return render_template ('register.html', form=form)
 
 
