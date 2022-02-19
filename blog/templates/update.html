@@ -1,9 +1,36 @@
 {% extends 'base.html'%}
 {% block content %}
-<div class="container">
-    <form method="post">
-       <textarea name="title" id="title" class="form-control" placeholder="Введите название"></textarea>
-       <textarea name="content" id="content" class="form-control" placeholder="Введите описание"></textarea>
-        <button type="submit" class="btn btn-success" >Обновить</button>
-    </form>
+<section class="page-top-section set-bg" data-setbg="{{ url_for('static', filename = 'img/header-bg/1.jpg')}}">
+    <div class="container">
+        <h2>Вход</h2>
+    </div>
+</section>
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            
+                <div class="col-lg-8">   
+    <form  method="POST">
+        <div class="col-lg-8">
+            <input name="title" id="title" class="form-control" placeholder="Введите название">
+    </div>
+    <div class="col-lg-8"> 
+        <textarea name="content" id="content" class="form-control" placeholder="Введите описание"></textarea>
+    </div>
+        </secetion>
+    <div class="col-lg-8"> 
+        <button type="submit" value="Обновить" class="btn btn-success">Обновить</button>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
        {% endblock %}
+    
+     
