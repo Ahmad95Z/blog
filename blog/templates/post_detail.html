@@ -20,33 +20,52 @@
 					<h3>{{post.title}}
 					</h3>
 					<div class="post-metas">
-						<div class="post-meta">{{post,author}}</div>
+						<div class="post-meta">{{post.author}}</div>
 						<div class="post-meta">in <a href="#">Games</a></div>
-						<div class="post-meta">3 Comments</div>
 					</div>
 					<p>{{post.content}}</p>
 					<div class="comments">
-						<h5>Comments (2)</h5>
-						<!-- <ul class="comments-list">
-							<li>
-								<img src="img/author-thumbs/1.jpg" alt="">
-								<div class="comment-text">
-									<h6>Jane Smith <a href="#" class="reply">Reply</a></h6>
-									<div class="comment-date">April 1,2019</div>
-									<p>Aenean non felis dapibus, placerat libero auctor, ornare ante. Morbi quis ex eleifend, sodales nulla vitae, scelerisque ante. Nunc id vulputate dui. Suspendisse consectetur rutrum metus nec scelerisque. </p>
-								</div>
-							</li>
-							<li>
-								<img src="img/author-thumbs/2.jpg" alt="">
-								<div class="comment-text">
-									<h6>Michael James  <a href="#" class="reply">Reply</a></h6>
-									<div class="comment-date">April 1,2019</div>
-									<p>Non felis dapibus, placerat libero auctor, ornare ante. Morbi quis ex eleifend, sodales nulla vitae, scelerisque ante. Nunc id vulputate dui. Suspendisse consectetur rutrum metus.</p>
-								</div>
-							</li>
-						</ul> -->
+					     
+					
+
+					</form>	
+						{% for comment in comments%}
 						
-								
+						<ul class="comments-list">
+							<li>
+								<form action="", method="POST">
+								<div class="comment-text">
+									<h6>{{comment.name}}<a href="#" class="reply">Reply</a></h6>
+									<div class="comment-date">{{comment.date_posted}}</div>
+								    <p>{{comment.message}}</p>
+								</div>
+							</li>
+							{% endfor %}
+							<div class="comment-form">
+								<form action="" method="POST">
+									<div class="form-group form-inline">
+										<div class="form-group col-lg-6 col-md-6 name">
+											<input type="text" class="form-control" id="name" name="name" placeholder="Enter Name"
+												onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+										</div>
+										<div class="form-group col-lg-6 col-md-6 email">
+											<input type="email" class="form-control" name="email" id="email"
+												placeholder="Enter email address" onfocus="this.placeholder = ''"
+												onblur="this.placeholder = 'Enter email address'">
+										</div>
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+									</div>
+									<div class="form-group">
+										<textarea class="form-control mb-10" rows="5" name="message" name="message" placeholder="Messege"
+											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"
+											required=""></textarea>
+									</div>
+									<button>Post Comment</button>
+									<a href="/blog/{{post.id}}/del" class="btn btn-warning">Удалить пост</a>
+									<a href="/blog/{{post.id}}/update" class="btn btn-success">Редактировать</a>
 	</section>
 	<!-- Blog section end -->
 

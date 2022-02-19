@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container">
+    <form method="post">
+       <textarea name="title" id="title" class="form-control" placeholder="Введите название"></textarea>
+       <textarea name="content" id="content" class="form-control" placeholder="Введите описание"></textarea>
+        <button type="submit" class="btn btn-success" >Обновить</button>
+    </form>
+       {% endblock %}

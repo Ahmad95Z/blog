@@ -1,7 +1,10 @@
+import re
+from tokenize import Comment
 from turtle import title
+from unicodedata import name
 from blog import app
 from flask import render_template, redirect, request, url_for,flash
-from blog.models import Post, db, User
+from blog.models import Post, db, User,Comment
 from flask_login import login_required, login_user, logout_user, current_user
 from blog.forms import RegistrationForm, PostForm
 from PIL import Image
@@ -62,7 +65,32 @@ def registration():
     return render_template ('register.html', form=form)
 
 
-@app.route('/blog/<int:post_id>')
+@app.route('/blog/<int:post_id>',methods=['GET','POST'])
 def post_detail(post_id):
     post = Post.query.get(post_id)
-    return render_template('post_detail.html', post=post)
+    comments=Comment.query.order_by(Comment.date_posted)
+    if request.method == 'POST':
+       comment = Comment(name=request.form.get('name'), subject=request.form.get('subject'),email=request.form.get('email'),message=request.form.get('message'),post=post)
+       db.session.add(comment)
+       db.session.commit() 
+       redirect (url_for('post_detail',post_id=post.id))
+    return render_template('post_detail.html', post=post,comments=comments)
+
+@app.route('/blog/<int:post_id>/del')
+def post_delete(post_id):
+    post = Post.query.get_or_404(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect ('/')
+    
+@app.route('/blog/<int:post_id>/update',methods=['GET','POST'])
+def post_update(post_id):
+    post = Post.query.get_or_404(post_id)
+    if request.method == "POST":
+        post.title = request.form['title']
+        post.content = request.form['content']
+        db.session.commit()
+        return redirect ('/')
+    else:
+        return render_template('update.html', post=post)
+    
