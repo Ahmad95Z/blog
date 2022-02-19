@@ -44,8 +44,8 @@
 		</a>
 		<ul class="main-menu">
 			<li><a href="{{ url_for('index')}}">Меню</a></li>
-			<li><a href="{{url_for('new_post')}}">Новый пост</a></li>
 			{% if current_user.is_authenticated %}
+			<li><a href="{{url_for('new_post')}}">Новый пост</a></li>
 			<li><a href="{{url_for('logout')}}">Выйти</a></li>
 			{% else %}
 			<li><a href="{{ url_for('login')}}">Войти</a></li>
