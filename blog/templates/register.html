@@ -12,18 +12,6 @@
                         <div class="row">
                             <form class="row login_form"  method="POST" id="contactForm" novalidate="novalidate">
                                {{ form.hidden_tag() }}
-                               <div class="col-12 mb-3">
-                                {% if form.users.errors %}
-                                {{ form.users(class="form-control form-control-lg is-invalid",placeholder='UserName') }} <br>
-                            <div class="invalid-feedback">
-                                {% for error in form.users.errors %}
-                                <span>{{ error }} </span>
-                                {% endfor %}
-                            </div>
-                            {% else %}
-                            {{ form.users(class="form-control" , placeholder='UserName')}} <br>
-                            {% endif %}
-                            </div>
                             <div class="col-12 mb-3">
                             {% if form.email.errors %}
                             {{ form.email(class="form-control form-control-lg is-invalid") }} <br>
@@ -33,7 +21,7 @@
                                 {% endfor %}
                             </div>
                             {% else %}
-                            {{ form.email(class="form-control form-control-lg is-invalid" , placeholder='Введите ваш email')}} <br>
+                            {{ form.email(class="form-control form-control-lg " , placeholder='Введите ваш email')}} <br>
                             {% endif %}
                             </div>
                             <div class="col-12 mb-3">
@@ -45,7 +33,7 @@
                                 {% endfor %}
                             </div>
                             {% else %}
-                            {{ form.password(class="form-control" , placeholder='Введите пароль')}} <br>
+                            {{ form.password(class="form-control form-control-lg is-invalid" , placeholder='Введите пароль')}} <br>
                             {% endif %}
                             <div class="col-12">
                                 {% if form.confirm_password.errors %}
@@ -69,7 +57,7 @@
                         
 							
                             <div  class="col-12 mb-3">
-                            {{ form.submit(class="button btn amado-btn w-100" )}}
+                            {{ form.submit(class="btn btn-success" )}}
                         </div>
                             <a class="button button-account" href="{{url_for('login')}}">У меня уже есть аккаунт</a>
                         </form>

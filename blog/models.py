@@ -13,9 +13,8 @@ def user_loader(users_id):
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer(), primary_key=True)
-    users = db.Column(db.String(), nullable=False, unique=True)
     email = db.Column(db.String(), nullable=False, unique=True)
-    password = db.Column(db.String(), nullable=False, unique=True)
+    password = db.Column(db.String(), nullable=False)
     isAdmin = db.Column(db.Boolean(), default=False, nullable=False)
     posts= db.relationship('Post',backref='author',lazy=True)
     def __repr__(self) -> str:

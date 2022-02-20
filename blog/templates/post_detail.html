@@ -36,7 +36,7 @@
 								<form action="", method="POST">
 								<div class="comment-text">
 									<h6>{{comment.name}}<a href="#" class="reply">Reply</a></h6>
-									<div class="comment-date">{{comment.date_posted}}</div>
+									<div class="comment-date">{{comment.date_posted.strftime('%Y-%m-%d')}}</div>
 								    <p>{{comment.message}}</p>
 								</div>
 							</li>
